@@ -38,8 +38,8 @@ const Hero = () => {
               Start Your Analytics Journey
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover:bg-primary/10 transition-all duration-300">
-              View Live Demo
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover:bg-primary/10 transition-all duration-300" asChild>
+              <a href="#demo">View Live Demo</a>
             </Button>
           </div>
           
