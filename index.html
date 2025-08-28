@@ -1,25 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataFlow - Transform Your Data Journey | Complete Analytics Platform</title>
-    <meta name="description" content="Complete data analytics platform with ETL, ML forecasting, and Power BI integration. Transform raw data into actionable insights with our enterprise-grade solution." />
-    <meta name="author" content="DataFlow Analytics" />
-    <meta name="keywords" content="data analytics, ETL, business intelligence, machine learning, Power BI, data visualization, Python, SQL Server" />
+    <meta name="description" content="Complete data analytics platform with ETL, ML forecasting, and Power BI integration. Transform raw data into actionable insights with our enterprise-grade solution.">
+    <meta name="author" content="DataFlow Analytics">
+    <meta name="keywords" content="data analytics, ETL, business intelligence, machine learning, Power BI, data visualization, Python, SQL Server">
+    
+    <meta property="og:title" content="DataFlow - Transform Your Data Journey">
+    <meta property="og:description" content="Complete data analytics platform with ETL, ML forecasting, and Power BI integration. Transform raw data into actionable insights.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lovable_dev">
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.300.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <span class="logo-text">DataFlow</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#workflow" class="nav-link">Workflow</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#technology" class="nav-link">Technology</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                </nav>
+                
+                <!-- Desktop CTA -->
+                <div class="cta-desktop">
+                    <button class="btn btn-ghost">Sign In</button>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="menu-icon"></i>
+                    <i data-lucide="x" class="close-icon" style="display: none;"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav" id="mobileNav">
+                <nav>
+                    <a href="#workflow" class="mobile-nav-link" onclick="toggleMobileMenu()">Workflow</a>
+                    <a href="#features" class="mobile-nav-link" onclick="toggleMobileMenu()">Features</a>
+                    <a href="#technology" class="mobile-nav-link" onclick="toggleMobileMenu()">Technology</a>
+                    <a href="#pricing" class="mobile-nav-link" onclick="toggleMobileMenu()">Pricing</a>
+                    <div class="mobile-cta">
+                        <button class="btn btn-ghost">Sign In</button>
+                        <button class="btn btn-primary">Get Started</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-    <meta property="og:title" content="DataFlow - Transform Your Data Journey" />
-    <meta property="og:description" content="Complete data analytics platform with ETL, ML forecasting, and Power BI integration. Transform raw data into actionable insights." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <!-- Animated background -->
+            <div class="hero-bg"></div>
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            
+            <!-- Content -->
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <!-- Badge -->
+                    <div class="hero-badge">
+                        <i data-lucide="trending-up"></i>
+                        <span>Next-Generation Data Analytics Platform</span>
+                    </div>
+                    
+                    <!-- Main headline -->
+                    <h1 class="hero-title">
+                        Transform Your
+                        <span class="gradient-text">Data Journey</span>
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="hero-subtitle">
+                        From raw data sources to powerful insights with our complete ETL, forecasting, 
+                        and business intelligence solution
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-lg">
+                            Start Your Analytics Journey
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                        <button class="btn btn-outline btn-lg">
+                            <a href="#demo">View Live Demo</a>
+                        </button>
+                    </div>
+                    
+                    <!-- Feature highlights -->
+                    <div class="hero-features">
+                        <div class="feature-card">
+                            <i data-lucide="database"></i>
+                            <div>
+                                <h3>Multi-Source ETL</h3>
+                                <p>SQL Server, CSV & More</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i data-lucide="trending-up"></i>
+                            <div>
+                                <h3>ML Forecasting</h3>
+                                <p>Python & Scikit-learn</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i data-lucide="bar-chart-3"></i>
+                            <div>
+                                <h3>Power BI Integration</h3>
+                                <p>Charts, KPIs & Maps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        <!-- Live Demo Section -->
+        <div id="demo">
+            <section class="demo-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="gradient-text">Live Demo</span>
+                        </h2>
+                        <p class="section-subtitle">
+                            Experience our complete analytics pipeline in action. From data ingestion to intelligent forecasting.
+                        </p>
+                        <button class="btn btn-primary btn-lg" onclick="runDemo()">
+                            <i data-lucide="play"></i>
+                            <span class="demo-btn-text">Start Demo</span>
+                        </button>
+                    </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                    <div class="demo-content">
+                        <!-- Demo Tabs -->
+                        <div class="tabs">
+                            <div class="tab-buttons">
+                                <button class="tab-btn active" onclick="showTab('pipeline')">Analytics Pipeline</button>
+                                <button class="tab-btn" onclick="showTab('dashboard')">Dashboard</button>
+                                <button class="tab-btn" onclick="showTab('insights')">AI Insights</button>
+                            </div>
+
+                            <!-- Pipeline Tab -->
+                            <div class="tab-content active" id="pipeline">
+                                <!-- Progress Bar -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <i data-lucide="database"></i>
+                                            Processing Pipeline
+                                        </h3>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="progressFill"></div>
+                                        </div>
+                                        
+                                        <!-- Steps -->
+                                        <div class="demo-steps">
+                                            <div class="demo-step" id="step-0">
+                                                <i data-lucide="upload" class="step-icon"></i>
+                                                <div>
+                                                    <h4>Data Upload</h4>
+                                                    <p class="step-status">Pending</p>
+                                                </div>
+                                            </div>
+                                            <div class="demo-step" id="step-1">
+                                                <i data-lucide="zap" class="step-icon"></i>
+                                                <div>
+                                                    <h4>ETL Processing</h4>
+                                                    <p class="step-status">Pending</p>
+                                                </div>
+                                            </div>
+                                            <div class="demo-step" id="step-2">
+                                                <i data-lucide="trending-up" class="step-icon"></i>
+                                                <div>
+                                                    <h4>ML Analysis</h4>
+                                                    <p class="step-status">Pending</p>
+                                                </div>
+                                            </div>
+                                            <div class="demo-step" id="step-3">
+                                                <i data-lucide="bar-chart-3" class="step-icon"></i>
+                                                <div>
+                                                    <h4>Visualization</h4>
+                                                    <p class="step-status">Pending</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sample Data Sources -->
+                                <div class="data-sources">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3>SQL Server</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="data-stats">
+                                                <div class="stat">
+                                                    <span>Tables:</span>
+                                                    <span>12</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span>Records:</span>
+                                                    <span>2.4M</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span>Status:</span>
+                                                    <span class="status-connected">Connected</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3>CSV Files</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="data-stats">
+                                                <div class="stat">
+                                                    <span>Files:</span>
+                                                    <span>8</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span>Size:</span>
+                                                    <span>450MB</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span>Status:</span>
+                                                    <span class="status-connected">Ready</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3>API Sources</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="data-stats">
+                                                <div class="stat">
+                                                    <span>Endpoints:</span>
+                                                    <span>5</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span>Frequency:</span>
+                                                    <span>Real-time</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span>Status:</span>
+                                                    <span class="status-connected">Active</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dashboard Tab -->
+                            <div class="tab-content" id="dashboard">
+                                <div class="dashboard-grid">
+                                    <!-- Sales Chart -->
+                                    <div class="card chart-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i data-lucide="bar-chart-3"></i>
+                                                Sales vs Forecast
+                                            </h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="chart-container">
+                                                <div class="chart-bars">
+                                                    <div class="chart-month">
+                                                        <div class="bars">
+                                                            <div class="bar sales-bar" style="height: 64%;"></div>
+                                                            <div class="bar forecast-bar" style="height: 69%;"></div>
+                                                        </div>
+                                                        <span>Jan</span>
+                                                    </div>
+                                                    <div class="chart-month">
+                                                        <div class="bars">
+                                                            <div class="bar sales-bar" style="height: 74%;"></div>
+                                                            <div class="bar forecast-bar" style="height: 73%;"></div>
+                                                        </div>
+                                                        <span>Feb</span>
+                                                    </div>
+                                                    <div class="chart-month">
+                                                        <div class="bars">
+                                                            <div class="bar sales-bar" style="height: 69%;"></div>
+                                                            <div class="bar forecast-bar" style="height: 76%;"></div>
+                                                        </div>
+                                                        <span>Mar</span>
+                                                    </div>
+                                                    <div class="chart-month">
+                                                        <div class="bars">
+                                                            <div class="bar sales-bar" style="height: 87%;"></div>
+                                                            <div class="bar forecast-bar" style="height: 84%;"></div>
+                                                        </div>
+                                                        <span>Apr</span>
+                                                    </div>
+                                                    <div class="chart-month">
+                                                        <div class="bars">
+                                                            <div class="bar sales-bar" style="height: 84%;"></div>
+                                                            <div class="bar forecast-bar" style="height: 89%;"></div>
+                                                        </div>
+                                                        <span>May</span>
+                                                    </div>
+                                                    <div class="chart-month">
+                                                        <div class="bars">
+                                                            <div class="bar sales-bar" style="height: 97%;"></div>
+                                                            <div class="bar forecast-bar" style="height: 93%;"></div>
+                                                        </div>
+                                                        <span>Jun</span>
+                                                    </div>
+                                                </div>
+                                                <div class="chart-legend">
+                                                    <div class="legend-item">
+                                                        <div class="legend-color sales"></div>
+                                                        <span>Actual Sales</span>
+                                                    </div>
+                                                    <div class="legend-item">
+                                                        <div class="legend-color forecast"></div>
+                                                        <span>ML Forecast</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- KPI Cards -->
+                                    <div class="card kpi-card">
+                                        <div class="card-header">
+                                            <h3>Revenue Growth</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="kpi-value growth">+24.5%</div>
+                                            <p class="kpi-label">vs last quarter</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card kpi-card">
+                                        <div class="card-header">
+                                            <h3>Forecast Accuracy</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="kpi-value primary">94.2%</div>
+                                            <p class="kpi-label">ML model performance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Insights Tab -->
+                            <div class="tab-content" id="insights">
+                                <div class="insights-grid">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3>🔮 AI Predictions</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="insight-item primary">
+                                                <h4>Next Quarter Outlook</h4>
+                                                <p>Based on seasonal trends and recent performance, expect 15% growth in Q3.</p>
+                                            </div>
+                                            <div class="insight-item accent">
+                                                <h4>Risk Assessment</h4>
+                                                <p>Low risk detected. Market conditions remain favorable for continued growth.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3>🎯 Recommendations</h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="insight-item success">
+                                                <h4>Optimization Opportunity</h4>
+                                                <p>Consider increasing marketing spend in Region B for +8% potential uplift.</p>
+                                            </div>
+                                            <div class="insight-item info">
+                                                <h4>Data Quality</h4>
+                                                <p>Excellent data completeness (99.7%). Ready for advanced analytics.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <i data-lucide="download"></i>
+                                            Export Options
+                                        </h3>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="export-buttons">
+                                            <button class="btn btn-outline">
+                                                <i data-lucide="download"></i>
+                                                Power BI Report
+                                            </button>
+                                            <button class="btn btn-outline">
+                                                <i data-lucide="download"></i>
+                                                Excel Dashboard
+                                            </button>
+                                            <button class="btn btn-outline">
+                                                <i data-lucide="download"></i>
+                                                PDF Summary
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Workflow Steps Section -->
+        <div id="workflow">
+            <section class="workflow-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            Complete Data Analytics
+                            <span class="gradient-text">Workflow</span>
+                        </h2>
+                        <p class="section-subtitle">
+                            Our comprehensive 7-step process transforms raw data into actionable business insights
+                        </p>
+                    </div>
+                    
+                    <div class="workflow-steps">
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <i data-lucide="database" class="step-icon blue"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Data Source</h3>
+                                <p class="step-subtitle">SQL Server / CSV</p>
+                                <p class="step-description">Connect to multiple data sources including SQL Server databases and CSV files</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <i data-lucide="refresh-cw" class="step-icon green"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Extract & Clean Data</h3>
+                                <p class="step-subtitle">Data Processing</p>
+                                <p class="step-description">Automated data extraction and cleaning processes ensure data quality</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <i data-lucide="brain" class="step-icon purple"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Python ETL & Forecasting</h3>
+                                <p class="step-subtitle">pandas, scikit-learn</p>
+                                <p class="step-description">Advanced machine learning forecasting using Python's powerful data science libraries</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <i data-lucide="upload" class="step-icon orange"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Push Dataset / Direct Query</h3>
+                                <p class="step-subtitle">Data Transfer</p>
+                                <p class="step-description">Seamlessly push processed datasets or enable direct querying for real-time insights</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">5</div>
+                                <i data-lucide="bar-chart-3" class="step-icon primary"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Power BI Dashboard</h3>
+                                <p class="step-subtitle">Charts, KPIs, Maps</p>
+                                <p class="step-description">Create stunning visualizations with interactive charts, KPIs, and geographic maps</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">6</div>
+                                <i data-lucide="monitor" class="step-icon teal"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>Embed via SDK / iFrame</h3>
+                                <p class="step-subtitle">Integration Options</p>
+                                <p class="step-description">Flexible embedding options using SDK or iFrame for seamless integration</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-header">
+                                <div class="step-number">7</div>
+                                <i data-lucide="globe" class="step-icon red"></i>
+                            </div>
+                            <div class="step-content">
+                                <h3>ASP.NET Core Web App</h3>
+                                <p class="step-subtitle">Login, Embed Report</p>
+                                <p class="step-description">Complete web application with secure login and embedded reporting capabilities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Features Section -->
+        <div id="features">
+            <section class="features-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            Everything You Need for
+                            <span class="gradient-text">Data Success</span>
+                        </h2>
+                        <p class="section-subtitle">
+                            Comprehensive features designed to accelerate your data analytics journey from inception to insights
+                        </p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card-lg">
+                            <div class="feature-icon">
+                                <i data-lucide="zap"></i>
+                            </div>
+                            <h3>Lightning Fast ETL</h3>
+                            <p>Process massive datasets in minutes, not hours. Our optimized Python ETL pipeline handles complex transformations with ease.</p>
+                            <ul class="feature-benefits">
+                                <li>10x faster processing</li>
+                                <li>Automated data cleaning</li>
+                                <li>Error handling & validation</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card-lg">
+                            <div class="feature-icon">
+                                <i data-lucide="shield"></i>
+                            </div>
+                            <h3>Enterprise Security</h3>
+                            <p>Bank-grade security with role-based access control, data encryption, and audit trails for complete peace of mind.</p>
+                            <ul class="feature-benefits">
+                                <li>AES-256 encryption</li>
+                                <li>SSO integration</li>
+                                <li>Compliance ready</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card-lg">
+                            <div class="feature-icon">
+                                <i data-lucide="gauge"></i>
+                            </div>
+                            <h3>Real-time Analytics</h3>
+                            <p>Get instant insights with live dashboards, real-time data streaming, and automated alert systems.</p>
+                            <ul class="feature-benefits">
+                                <li>Live data streaming</li>
+                                <li>Instant notifications</li>
+                                <li>Zero-latency queries</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card-lg">
+                            <div class="feature-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <h3>Collaborative Workspaces</h3>
+                            <p>Share insights across teams with collaborative dashboards, commenting, and role-based permissions.</p>
+                            <ul class="feature-benefits">
+                                <li>Team collaboration</li>
+                                <li>Shared dashboards</li>
+                                <li>Comment & annotations</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card-lg">
+                            <div class="feature-icon">
+                                <i data-lucide="cloud"></i>
+                            </div>
+                            <h3>Cloud-Native Architecture</h3>
+                            <p>Built for the cloud with auto-scaling, high availability, and seamless integration with your existing infrastructure.</p>
+                            <ul class="feature-benefits">
+                                <li>Auto-scaling</li>
+                                <li>99.9% uptime SLA</li>
+                                <li>Hybrid cloud support</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card-lg">
+                            <div class="feature-icon">
+                                <i data-lucide="smartphone"></i>
+                            </div>
+                            <h3>Mobile-First Design</h3>
+                            <p>Access your data anywhere with our responsive web app and native mobile experience.</p>
+                            <ul class="feature-benefits">
+                                <li>Mobile responsive</li>
+                                <li>Offline capabilities</li>
+                                <li>Touch-optimized UI</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Section -->
+                    <div class="features-cta">
+                        <div class="cta-box">
+                            <h3>Ready to Transform Your Data?</h3>
+                            <p>Join thousands of businesses already using our platform to drive data-driven decisions</p>
+                            <button class="btn btn-white">
+                                Start Free Trial
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Technology Section -->
+        <div id="technology">
+            <section class="tech-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            Powered by
+                            <span class="gradient-text">Industry Leaders</span>
+                        </h2>
+                        <p class="section-subtitle">
+                            Built with cutting-edge technologies and frameworks trusted by enterprises worldwide
+                        </p>
+                    </div>
+                    
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <div class="tech-logo">🗄️</div>
+                            <h3>SQL Server</h3>
+                            <div class="tech-category">Database</div>
+                            <p>Enterprise-grade relational database management system</p>
+                        </div>
+
+                        <div class="tech-card">
+                            <div class="tech-logo">🐍</div>
+                            <h3>Python</h3>
+                            <div class="tech-category">Data Processing</div>
+                            <p>Powerful programming language for data science and machine learning</p>
+                        </div>
+
+                        <div class="tech-card">
+                            <div class="tech-logo">🐼</div>
+                            <h3>Pandas</h3>
+                            <div class="tech-category">Data Analysis</div>
+                            <p>Fast, powerful data structures and analysis tools</p>
+                        </div>
+
+                        <div class="tech-card">
+                            <div class="tech-logo">🧠</div>
+                            <h3>Scikit-learn</h3>
+                            <div class="tech-category">Machine Learning</div>
+                            <p>Simple and efficient tools for predictive data analysis</p>
+                        </div>
+
+                        <div class="tech-card">
+                            <div class="tech-logo">📊</div>
+                            <h3>Power BI</h3>
+                            <div class="tech-category">Business Intelligence</div>
+                            <p>Business analytics tool for visualizing and sharing insights</p>
+                        </div>
+
+                        <div class="tech-card">
+                            <div class="tech-logo">🌐</div>
+                            <h3>ASP.NET Core</h3>
+                            <div class="tech-category">Web Framework</div>
+                            <p>Cross-platform, high-performance framework for modern web applications</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional features -->
+                    <div class="tech-features">
+                        <div class="tech-feature">
+                            <div class="feature-dot green"></div>
+                            <span>Real-time Processing</span>
+                        </div>
+                        <div class="tech-feature">
+                            <div class="feature-dot blue"></div>
+                            <span>Scalable Architecture</span>
+                        </div>
+                        <div class="tech-feature">
+                            <div class="feature-dot purple"></div>
+                            <span>Enterprise Security</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <span class="logo-text">DataFlow</span>
+                    </div>
+                    <p>Transform your data journey with our comprehensive analytics platform. From ETL to insights in minutes, not hours.</p>
+                    <div class="social-links">
+                        <a href="#"><i data-lucide="github"></i></a>
+                        <a href="#"><i data-lucide="twitter"></i></a>
+                        <a href="#"><i data-lucide="linkedin"></i></a>
+                        <a href="#"><i data-lucide="mail"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Product -->
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Solutions -->
+                <div class="footer-section">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">Business Intelligence</a></li>
+                        <li><a href="#">Machine Learning</a></li>
+                        <li><a href="#">Data Visualization</a></li>
+                        <li><a href="#">Real-time Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company -->
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom -->
+            <div class="footer-bottom">
+                <p>© 2024 DataFlow. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
