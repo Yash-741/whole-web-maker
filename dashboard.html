@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DataFlow Analytics</title>
+    <meta name="description" content="Access your personalized analytics dashboard with real-time insights and data visualizations.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.300.0/lucide.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <span class="logo-text">DataFlow</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#analytics" class="nav-link">Analytics</a>
+                    <a href="#data-sources" class="nav-link">Data Sources</a>
+                    <a href="#reports" class="nav-link">Reports</a>
+                    <a href="#settings" class="nav-link">Settings</a>
+                </nav>
+                
+                <!-- User Menu -->
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <i data-lucide="user"></i>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-info">
+                            <p class="user-name" id="userName">Loading...</p>
+                            <p class="user-email" id="userEmail">Loading...</p>
+                        </div>
+                        <hr>
+                        <a href="#profile" class="dropdown-item">
+                            <i data-lucide="user"></i>
+                            Profile
+                        </a>
+                        <a href="#settings" class="dropdown-item">
+                            <i data-lucide="settings"></i>
+                            Settings
+                        </a>
+                        <hr>
+                        <button onclick="signOut()" class="dropdown-item logout-btn">
+                            <i data-lucide="log-out"></i>
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h1 class="dashboard-title">Welcome back, <span id="welcomeName">User</span>!</h1>
+                <p class="dashboard-subtitle">Here's your analytics overview for today</p>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Data Sources</h3>
+                        <p class="stat-number">12</p>
+                        <p class="stat-change positive">+2 this week</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Records Processed</h3>
+                        <p class="stat-number">2.4M</p>
+                        <p class="stat-change positive">+15% from last month</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Active Reports</h3>
+                        <p class="stat-number">8</p>
+                        <p class="stat-change neutral">No change</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Last Sync</h3>
+                        <p class="stat-number">2 min ago</p>
+                        <p class="stat-change positive">Real-time</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-grid">
+                    <button class="action-card">
+                        <i data-lucide="upload"></i>
+                        <h3>Upload Data</h3>
+                        <p>Import CSV or connect new data source</p>
+                    </button>
+
+                    <button class="action-card">
+                        <i data-lucide="play"></i>
+                        <h3>Run Analysis</h3>
+                        <p>Start ML forecasting on your data</p>
+                    </button>
+
+                    <button class="action-card">
+                        <i data-lucide="file-text"></i>
+                        <h3>Create Report</h3>
+                        <p>Generate new dashboard or visualization</p>
+                    </button>
+
+                    <button class="action-card">
+                        <i data-lucide="settings"></i>
+                        <h3>Configure ETL</h3>
+                        <p>Set up data transformation pipeline</p>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i data-lucide="upload"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Data Upload Completed</h4>
+                            <p>sales_data_q4.csv - 150,000 records</p>
+                            <span class="activity-time">2 minutes ago</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>ML Forecast Generated</h4>
+                            <p>Revenue prediction for Q1 2024</p>
+                            <span class="activity-time">1 hour ago</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>SQL Server Connection</h4>
+                            <p>Production database synchronized</p>
+                            <span class="activity-time">3 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Supabase
+        const supabaseUrl = 'https://zdvaiujlorzomlzrtdaf.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkdmFpdWpsb3J6b21senJ0ZGFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4ODc4NTEsImV4cCI6MjA3MDQ2Mzg1MX0.Fl0w5FMBTxqMHTja6AkCpjMCLZ8ERgM1DuSx1AJpNkQ';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Check authentication and load user data
+        window.addEventListener('load', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Load user information
+            const user = session.user;
+            document.getElementById('userName').textContent = user.user_metadata?.username || user.email.split('@')[0];
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('welcomeName').textContent = user.user_metadata?.username || user.email.split('@')[0];
+        });
+
+        // Toggle user menu
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const userMenu = document.querySelector('.user-menu');
+            const dropdown = document.getElementById('userDropdown');
+            
+            if (!userMenu.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Sign out function
+        async function signOut() {
+            try {
+                await supabase.auth.signOut();
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        }
+
+        // Listen for auth state changes
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_OUT') {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

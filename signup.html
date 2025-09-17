@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - DataFlow Analytics</title>
+    <meta name="description" content="Create your DataFlow account to start transforming your data into actionable insights.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.300.0/lucide.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <span class="logo-text">DataFlow</span>
+                </div>
+                <h1>Create Account</h1>
+                <p>Sign up to start your analytics journey</p>
+            </div>
+            
+            <div class="login-content">
+                <form id="signupForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <i data-lucide="user" class="input-icon"></i>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                placeholder="Choose a username" 
+                                required
+                                minlength="3"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-group">
+                            <i data-lucide="mail" class="input-icon"></i>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Enter your email" 
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <i data-lucide="lock" class="input-icon"></i>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Create a password" 
+                                required
+                                minlength="6"
+                            >
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i data-lucide="eye" class="eye-open"></i>
+                                <i data-lucide="eye-off" class="eye-closed" style="display: none;"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength" style="display: none;">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <p class="strength-text" id="strengthText"></p>
+                        </div>
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="signupBtn">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i data-lucide="loader-2" class="spinning"></i>
+                            Creating account...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Already have an account? <a href="login.html" class="link">Sign in here</a></p>
+                    <p><a href="index.html" class="link">← Back to home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase
+        const supabaseUrl = 'https://zdvaiujlorzomlzrtdaf.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkdmFpdWpsb3J6b21senJ0ZGFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4ODc4NTEsImV4cCI6MjA3MDQ2Mzg1MX0.Fl0w5FMBTxqMHTja6AkCpjMCLZ8ERgM1DuSx1AJpNkQ';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Check if user is already logged in
+        window.addEventListener('load', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        // Password toggle functionality
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeOpen = document.querySelector('.eye-open');
+            const eyeClosed = document.querySelector('.eye-closed');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeOpen.style.display = 'none';
+                eyeClosed.style.display = 'block';
+            } else {
+                passwordInput.type = 'password';
+                eyeOpen.style.display = 'block';
+                eyeClosed.style.display = 'none';
+            }
+        }
+
+        // Password strength checker
+        function validatePassword(password) {
+            const strength = document.getElementById('passwordStrength');
+            const fill = document.getElementById('strengthFill');
+            const text = document.getElementById('strengthText');
+            
+            if (!password) {
+                strength.style.display = 'none';
+                return { score: 0, feedback: [] };
+            }
+            
+            strength.style.display = 'block';
+            
+            let score = 0;
+            const feedback = [];
+            
+            if (password.length >= 8) score += 1;
+            else feedback.push('Use at least 8 characters');
+            
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score += 1;
+            else feedback.push('Mix uppercase and lowercase letters');
+            
+            if (/\d/.test(password)) score += 1;
+            else feedback.push('Include at least one number');
+            
+            if (/[^a-zA-Z0-9]/.test(password)) score += 1;
+            else feedback.push('Include special characters');
+            
+            const strength_labels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+            const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#16a34a'];
+            
+            fill.style.width = `${(score / 4) * 100}%`;
+            fill.style.backgroundColor = colors[score];
+            text.textContent = strength_labels[score];
+            text.style.color = colors[score];
+            
+            return { score, feedback };
+        }
+
+        // Password input listener
+        document.getElementById('password').addEventListener('input', (e) => {
+            validatePassword(e.target.value);
+        });
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            successDiv.style.display = 'none';
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+        }
+
+        // Hide messages
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        // Handle form submission
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const signupBtn = document.getElementById('signupBtn');
+            const btnText = document.querySelector('.btn-text');
+            const btnLoading = document.querySelector('.btn-loading');
+
+            // Clear previous messages
+            hideMessages();
+
+            // Validate inputs
+            if (!username || !email || !password) {
+                showError('Please fill in all fields');
+                return;
+            }
+
+            if (username.length < 3) {
+                showError('Username must be at least 3 characters long');
+                return;
+            }
+
+            const passwordValidation = validatePassword(password);
+            if (passwordValidation.score < 2) {
+                showError('Please create a stronger password');
+                return;
+            }
+
+            // Show loading state
+            signupBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'flex';
+
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        emailRedirectTo: `${window.location.origin}/`,
+                        data: {
+                            username: username
+                        }
+                    }
+                });
+
+                if (error) {
+                    if (error.message.includes('User already registered')) {
+                        showError('An account with this email already exists. Please sign in instead.');
+                    } else {
+                        showError(error.message);
+                    }
+                } else {
+                    showSuccess('Account created successfully! Please check your email to confirm your account before signing in.');
+                    // Clear form
+                    document.getElementById('signupForm').reset();
+                    document.getElementById('passwordStrength').style.display = 'none';
+                }
+            } catch (err) {
+                showError('An unexpected error occurred. Please try again.');
+            } finally {
+                // Reset button state
+                signupBtn.disabled = false;
+                btnText.style.display = 'block';
+                btnLoading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
