@@ -6,8 +6,8 @@
     <title>Sign In - DataFlow Analytics</title>
     <meta name="description" content="Sign in to your DataFlow account to access your analytics dashboard and data insights.">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.300.0/lucide.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.54.0/dist/umd/supabase.min.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -78,18 +78,33 @@
 
     <script>
         // Initialize Supabase
-        const supabaseUrl = 'https://zdvaiujlorzomlzrtdaf.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkdmFpdWpsb3J6b21senJ0ZGFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4ODc4NTEsImV4cCI6MjA3MDQ2Mzg1MX0.Fl0w5FMBTxqMHTja6AkCpjMCLZ8ERgM1DuSx1AJpNkQ';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        let supabase;
+        try {
+            const supabaseUrl = 'https://zdvaiujlorzomlzrtdaf.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkdmFpdWpsb3J6b21senJ0ZGFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4ODc4NTEsImV4cCI6MjA3MDQ2Mzg1MX0.Fl0w5FMBTxqMHTja6AkCpjMCLZ8ERgM1DuSx1AJpNkQ';
+            supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        } catch (error) {
+            console.error('Failed to initialize Supabase:', error);
+        }
 
         // Initialize Lucide icons
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
 
         // Check if user is already logged in
         window.addEventListener('load', async () => {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                window.location.href = 'dashboard.html';
+            if (supabase) {
+                try {
+                    const { data: { session } } = await supabase.auth.getSession();
+                    if (session) {
+                        window.location.href = 'dashboard.html';
+                    }
+                } catch (error) {
+                    console.error('Error checking session:', error);
+                }
             }
         });
 
@@ -148,12 +163,18 @@
             btnLoading.style.display = 'flex';
 
             try {
+                if (!supabase) {
+                    showError('Authentication service is not available. Please refresh the page.');
+                    return;
+                }
+
                 const { data, error } = await supabase.auth.signInWithPassword({
                     email: email,
                     password: password
                 });
 
                 if (error) {
+                    console.error('Login error:', error);
                     if (error.message.includes('Invalid login credentials')) {
                         showError('Invalid email or password. Please try again.');
                     } else if (error.message.includes('Email not confirmed')) {
@@ -163,6 +184,7 @@
                     }
                 } else {
                     // Success - redirect to dashboard
+                    console.log('Login successful');
                     window.location.href = 'dashboard.html';
                 }
             } catch (err) {
